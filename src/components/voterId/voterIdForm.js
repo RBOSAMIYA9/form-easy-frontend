@@ -12,8 +12,8 @@ import {
     Input,
     DatePicker
 } from 'antd';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
-import moment from 'moment';
+import { UploadOutlined } from '@ant-design/icons';
+// import moment from 'moment';
 import '../../custom.css'
 import country from 'country_state_district';
 
@@ -46,9 +46,9 @@ function VoterIdForm() {
         console.log('Success:', values);
     };
 
-    const onFinishFailed = (errorInfo) => {
-        console.log('Failed:', errorInfo);
-    };
+    // const onFinishFailed = (errorInfo) => {
+    //     console.log('Failed:', errorInfo);
+    // };
     return (
         <>
             <h1>Voter Id form</h1>

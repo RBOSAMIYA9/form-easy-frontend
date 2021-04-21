@@ -1,7 +1,7 @@
-import HeaderSection from './components/HeaderSection'
-import { useEffect, useState } from 'react'
+// import HeaderSection from './components/HeaderSection'
+import { useEffect } from 'react'
 import axios from 'axios';
-import { Layout } from 'antd';
+// import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import AadharCard from './components/aadharCard/AadharCard'
 import PanCard from './components/panCard/panCard'
@@ -13,7 +13,7 @@ import {
   Switch,
   Route
 } from "react-router-dom";
-const { Footer, Content } = Layout;
+// const { Footer, Content } = Layout;
 function App() {
 
 

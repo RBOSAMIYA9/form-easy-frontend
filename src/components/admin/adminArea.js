@@ -15,7 +15,7 @@ import ViewList from './viewList'
 import ApprovedList from './approvedList'
 import RejectedList from './rejectedList'
 
-const { Header, Sider, Content } = Layout;
+const {  Sider, Content } = Layout;
 
 function AdminArea({ adminType }) {
 

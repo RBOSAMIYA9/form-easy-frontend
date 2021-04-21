@@ -12,8 +12,8 @@ import {
     Input,
     DatePicker
 } from 'antd';
-import { UploadOutlined, InboxOutlined } from '@ant-design/icons';
-import moment from 'moment';
+import { UploadOutlined } from '@ant-design/icons';
+// import moment from 'moment';
 import '../../custom.css'
 import country from 'country_state_district';
 import { uploadData, uploadPhoto } from '../../firebase/addData'
@@ -161,7 +161,7 @@ function AadharCardForm() {
                             </Form.Item>
 
                         </Form.Item>
-
+                        {/* form comple */}
                     </>
                 ) : (<></>)}
                 <Form.Item name="fullName" style={{ textAlign: "left" }} label="Full Name" rules={[{ required: true, message: 'Please enter Name!' }]}>

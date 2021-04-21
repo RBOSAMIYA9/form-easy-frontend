@@ -1,5 +1,5 @@
 import { projectStorage, projectFirestore, timeStamp } from '../firebase';
-import {useEffect} from 'react';
+
 
 const uploadData = async (data) => {
 

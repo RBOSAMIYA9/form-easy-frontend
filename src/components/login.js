@@ -4,16 +4,16 @@ import { LockOutlined } from '@ant-design/icons';
 import AdminArea from '../components/admin/adminArea'
 import '../custom.css'
 import HeaderSection from '../components/HeaderSection'
-import { Layout, Menu } from 'antd';
+import { Layout } from 'antd';
+// import { Layout, Menu } from 'antd';
 import {
-    MenuUnfoldOutlined,
-    MenuFoldOutlined,
+    
     UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
+  
 } from '@ant-design/icons';
 
-const { Footer, Header, Sider, Content } = Layout;
+// const { Footer, Header, Sider, Content } = Layout;
+const { Footer,  Content } = Layout;
 
 
 
