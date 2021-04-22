@@ -81,3 +81,8 @@
       transform: rotate(360deg);
     }
   }
+  .thankyou svg{
+    height: 5rem;
+    width: 5rem;
+    /* font-size: 5rem; */
+  }
