@@ -1,6 +1,6 @@
 // import HeaderSection from './components/HeaderSection'
-import { useEffect } from 'react'
-import axios from 'axios';
+// import { useEffect } from 'react'
+// import axios from 'axios';
 // import { Layout } from 'antd';
 import 'antd/dist/antd.css';
 import AadharCard from './components/aadharCard/AadharCard'

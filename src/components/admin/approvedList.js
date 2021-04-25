@@ -4,6 +4,8 @@ import useState from 'react-usestateref'
 import { projectFirestore } from '../../firebase';
 
 function ApprovedList({ adminType, adminDbName }) {
+
+    // eslint-disable-next-line
     const [approvedList, setApprovedList, approvedListRef] = useState([])
     const viewAll = () => {
 
@@ -81,6 +83,8 @@ function ApprovedList({ adminType, adminDbName }) {
         console.log("useeffect called")
         viewAll()
         console.log("aaplicationList", approvedList, approvedListRef.current);
+
+        // eslint-disable-next-line
     }, [])
 
     return (

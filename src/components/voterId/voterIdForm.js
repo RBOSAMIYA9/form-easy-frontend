@@ -45,12 +45,18 @@ function VoterIdForm() {
     const allFiles = ["photo", "sign", "aadharCard"]
     const [error, setError] = useState(false);
 
-
+    // eslint-disable-next-line
     var [filePhoto, setFilePhoto, filePhotoRef] = useState(null);
+    
+    // eslint-disable-next-line
     var [fileSign, setFileSign, fileSignRef] = useState(null);
+    
+    // eslint-disable-next-line
     var [fileAadhar, setFileAadhar, fileAadharRef] = useState(null);
 
     const [loading, setLoading] = useState(false);
+
+        // eslint-disable-next-line
     const [formFilled, setFormFilled, filledRef] = useState(false);
 
     const normFile = (e) => {

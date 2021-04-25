@@ -62,6 +62,8 @@ function filter(array, value, key) {
 function Login() {
     const [showAdminArea, setshowAdminArea] = useState(false);
     const [adminType, setAdminType] = useState(null)
+    
+    // eslint-disable-next-line
     const [adminDbName, setAdminDbName, dbNameRef] = useState(null)
     const [showError, setshowError] = useState(false)
     const [wpAdmin, setWpAdmin] = useState(false);

@@ -7,6 +7,7 @@ import { projectFirestore } from '../../firebase';
 
 function RejectedList({ adminType, adminDbName }) {
 
+    // eslint-disable-next-line
     const [rejectedList, setRejectedList, rejectedListRef] = useState([])
     const viewAll = () => {
 
@@ -87,6 +88,8 @@ function RejectedList({ adminType, adminDbName }) {
         console.log("useeffect called")
         viewAll()
         console.log("aaplicationList", rejectedList, rejectedListRef.current);
+
+        // eslint-disable-next-line
     }, [])
 
     return (

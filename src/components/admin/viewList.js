@@ -1,5 +1,4 @@
 import React, { useEffect } from 'react'
-import useDbOperations, { viewAll } from '../../firebase/dbOperations'
 import ListItem from './listItem'
 import useState from 'react-usestateref'
 import { projectFirestore } from '../../firebase';
@@ -9,8 +8,11 @@ import { projectFirestore } from '../../firebase';
 
 
 function ViewList({ adminType, adminDbName }) {
+
+    // eslint-disable-next-line
     const [applicantList, setApplicantList, applicantListRef] = useState([])
-    const [superList, setSuperList, superListRef] = useState([])
+    
+    // const [superList, setSuperList, superListRef] = useState([])
     
     
     const superlist = [];
@@ -127,7 +129,7 @@ function ViewList({ adminType, adminDbName }) {
         }
         else { viewAll(adminDbName) }
 
-
+        // eslint-disable-next-line
     }, [])
 
 

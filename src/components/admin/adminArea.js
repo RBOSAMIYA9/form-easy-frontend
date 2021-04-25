@@ -26,6 +26,8 @@ function AdminArea({ adminType ,adminDbName}) {
     console.log("adminType",adminType);
     console.log("adminDbName",adminDbName);
     setshowContent(<Dashboard adminType={ adminType } adminDbName={adminDbName}/>);
+
+    // eslint-disable-next-line
   }, [adminType])
 
   const toggleSlider = () => {

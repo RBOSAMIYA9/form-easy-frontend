@@ -11,8 +11,13 @@ const { confirm } = Modal;
 
 function ListItem({ menuType, name, adminDbName, id, status, listType }) {
     const [viewAllVisible, setViewAllVisible] = useState(false);
+    // eslint-disable-next-line
     const [modalContent, setModalContent, modalContentRef] = useState("");
+
+    // eslint-disable-next-line
     const [modalContentKeys, setModalContentKeys, modalContentKeysRef] = useState([]);
+
+    // eslint-disable-next-line
     const [modalContentValues, setModalContentValues, modalContentValuesRef] = useState([]);
     const collectionRef = projectFirestore.collection(adminDbName);
     // console.log("status", status);
@@ -95,7 +100,7 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                             </span>
                             <span className="listItemContainer">
 
-                                {menuType == "approvedList" ?
+                                {menuType === "approvedList" ?
                                     <>
                                         <span className="listItem">
 
@@ -108,7 +113,7 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                                             <Button type="danger" onClick={showConfirm}> Reject</Button>
                                         </span>
                                     </>
-                                    : menuType == "rejectedList" ? <>
+                                    : menuType === "rejectedList" ? <>
                                         <span className="listItem">
 
                                             <Button onClick={() => {

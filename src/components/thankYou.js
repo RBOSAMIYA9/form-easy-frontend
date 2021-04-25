@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { CheckCircleTwoTone } from '@ant-design/icons';
 import { Card} from 'antd';
 import '../custom.css'

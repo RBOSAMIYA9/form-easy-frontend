@@ -53,6 +53,8 @@ function AadharCardForm() {
     var [fileIdProof, setFileIdProof, fileIdProofRef] = useState(null);
 
     const [loading, setLoading] = useState(false);
+
+    // eslint-disable-next-line
     const [formFilled, setFormFilled, formFilledRef] = useState(false);
 
     const toggleAadharNoInput = (e) => {

@@ -51,12 +51,18 @@ function PanCardForm() {
     const [fatherNameOnPan, setFatherNameOnPan] = useState(false);
     const [haveAadhar, setHaveAadhar] = useState(false);
 
-
+// eslint-disable-next-line
     var [filePhoto, setFilePhoto, filePhotoRef] = useState(null);
+    
+    // eslint-disable-next-line
     var [fileSign, setFileSign, fileSignRef] = useState(null);
+
+    // eslint-disable-next-line
     var [fileAadhar, setFileAadhar, fileAadharRef] = useState(null);
 
     const [loading, setLoading] = useState(false);
+
+    // eslint-disable-next-line
     const [formFilled, setFormFilled, filledRef] = useState(false);
 
 
@@ -110,7 +116,7 @@ function PanCardForm() {
         // console.log("photo",values.identityProof[0])
 
         Object.keys(values).forEach(function (key, index) {
-            if (this[key] == undefined) this[key] = null;
+            if (this[key] === undefined) this[key] = null;
         }, values);
         console.log('After: ', values);
         setFilePhoto(values.aadharCardPhoto[0])

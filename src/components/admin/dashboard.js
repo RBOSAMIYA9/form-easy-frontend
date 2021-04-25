@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react'
-import { Button, Card, Col, Row } from 'antd';
+import { Card, Col, Row } from 'antd';
 import '../../custom.css'
 import { projectFirestore } from '../../firebase';
 import useState from 'react-usestateref'
@@ -12,15 +12,23 @@ const dbName = {
 }
 
 function Dashboard({ adminType }) {
+
+    // eslint-disable-next-line
     var [all, setAllCount, allCountRef] = useState(0)
+
+    // eslint-disable-next-line
     var [approved, setApprovedCount, approvedCountRef] = useState(0)
+
+    // eslint-disable-next-line
     var [rejected, setRejectedCount, rejectCountRef] = useState(0)
+
+
     const allCount = () => {
         // console.log("dbName in all count", dbName[adminType]);
         const collectionRef = projectFirestore.collection(dbName[adminType]);
         collectionRef.onSnapshot((snapshot) => {
             console.log("snapShot: ", snapshot.docs.length);
-            setAllCount( snapshot.docs.length);
+            setAllCount(snapshot.docs.length);
         })
     }
     const approvedCount = () => {
@@ -46,6 +54,7 @@ function Dashboard({ adminType }) {
             rejectCount()
         }
 
+        // eslint-disable-next-line
     }, [])
 
     return (
