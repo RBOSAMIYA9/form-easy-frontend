@@ -17,14 +17,15 @@ import RejectedList from './rejectedList'
 
 const {  Sider, Content } = Layout;
 
-function AdminArea({ adminType }) {
+function AdminArea({ adminType ,adminDbName}) {
 
-  const [showSlider, setshowSlider] = useState(false);
+  const [showSlider, setshowSlider] = useState(true);
   const [showContent, setshowContent] = useState(<Dashboard adminType={ adminType }/>);
 
   useEffect(() => {
     console.log("adminType",adminType);
-    setshowContent(<Dashboard adminType={ adminType }/>);
+    console.log("adminDbName",adminDbName);
+    setshowContent(<Dashboard adminType={ adminType } adminDbName={adminDbName}/>);
   }, [adminType])
 
   const toggleSlider = () => {
@@ -42,22 +43,22 @@ function AdminArea({ adminType }) {
             })}<span>Menu </span>
           </Menu.Item>
           <Menu.Item key="1" icon={<DashboardOutlined />}
-          onClick={(e) =>setshowContent(<Dashboard adminType={ adminType }/>)}
+          onClick={(e) =>setshowContent(<Dashboard adminType={ adminType }  adminDbName={adminDbName}/>)}
           >
            Dashboard
           </Menu.Item>
           <Menu.Item key="2" icon={<UnorderedListOutlined />}
-          onClick={(e) =>setshowContent(<ViewList adminType={ adminType }/>)}
+          onClick={(e) =>setshowContent(<ViewList adminType={ adminType } adminDbName={adminDbName}/>)}
           >
             View All 
           </Menu.Item>
           <Menu.Item key="3" icon={<CheckCircleOutlined />}
-          onClick={(e) =>setshowContent(<ApprovedList adminType={ adminType }/>)}
+          onClick={(e) =>setshowContent(<ApprovedList adminType={ adminType } adminDbName={adminDbName}/>)}
           >
             Approved
           </Menu.Item>
           <Menu.Item key="4" icon={<ExclamationCircleOutlined />}
-          onClick={(e) =>setshowContent(<RejectedList adminType={ adminType }/>)}
+          onClick={(e) =>setshowContent(<RejectedList adminType={ adminType } adminDbName={adminDbName}/>)}
           >
             Rejected
           </Menu.Item>
@@ -75,11 +76,7 @@ function AdminArea({ adminType }) {
           padding: '1rem',
           minHeight: '100vh',
         }}>
-
-
-        <h1>Admin area</h1>
-        <h1>{adminType}</h1>
-        <h1>{showContent}</h1>        
+        <h1 style={{textAlign:'center'}}>{showContent}</h1>        
       </Content>
     </>
   )

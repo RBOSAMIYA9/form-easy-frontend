@@ -29,7 +29,7 @@ function App() {
       });
   }
   useEffect(() => {
-    getData();
+    // getData();
   }, [])
   return (
     // style={{color:'white',fontSize:'2rem'}}
@@ -48,7 +48,6 @@ function App() {
               
               <Route path="/login" component={LoginPage}/>
                 
-
             </Switch>
           
           {/* </Content>

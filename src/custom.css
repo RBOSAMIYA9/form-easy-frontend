@@ -1,88 +1,164 @@
 .ant-input-number-handler-wrap {
-    display: none !important;
+  display: none !important;
 }
 
 .aadhar-number input {
-    letter-spacing: 0.8rem;
+  letter-spacing: 0.8rem;
 }
 
 .login-container {
-    min-height: 75vh;
-    padding: 3rem;
+  min-height: 75vh;
+  padding: 3rem;
 }
 
 .login-container h1 {
-    padding: 2rem 0 3rem 0;
+  padding: 2rem 0 3rem 0;
 }
 
 .toggle-icon {
-    color: #fff;
+  color: #fff;
 }
+
 .loader {
-    font-size: 10px;
-    margin: 50px auto;
-    text-indent: -9999em;
-    width: 11em;
-    height: 11em;
-    border-radius: 50%;
-    background: #ffffff;
-    background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
-    position: relative;
-    -webkit-animation: load3 1.4s infinite linear;
-    animation: load3 1.4s infinite linear;
-    -webkit-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    transform: translateZ(0);
+  font-size: 10px;
+  margin: 50px auto;
+  text-indent: -9999em;
+  width: 11em;
+  height: 11em;
+  border-radius: 50%;
+  background: #ffffff;
+  background: -moz-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -webkit-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -o-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: -ms-linear-gradient(left, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  background: linear-gradient(to right, #ffffff 10%, rgba(255, 255, 255, 0) 42%);
+  position: relative;
+  -webkit-animation: load3 1.4s infinite linear;
+  animation: load3 1.4s infinite linear;
+  -webkit-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  transform: translateZ(0);
+}
+
+.loader:before {
+  width: 50%;
+  height: 50%;
+  background: #ffffff;
+  border-radius: 100% 0 0 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: '';
+}
+
+.loader:after {
+  background: #0dc5c1;
+  width: 75%;
+  height: 75%;
+  border-radius: 50%;
+  content: '';
+  margin: auto;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+
+@-webkit-keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  .loader:before {
-    width: 50%;
-    height: 50%;
-    background: #ffffff;
-    border-radius: 100% 0 0 0;
-    position: absolute;
-    top: 0;
-    left: 0;
-    content: '';
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  .loader:after {
-    background: #0dc5c1;
-    width: 75%;
-    height: 75%;
-    border-radius: 50%;
-    content: '';
-    margin: auto;
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+}
+
+@keyframes load3 {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
   }
-  @-webkit-keyframes load3 {
-    0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
+
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
   }
-  @keyframes load3 {
-    0% {
-      -webkit-transform: rotate(0deg);
-      transform: rotate(0deg);
-    }
-    100% {
-      -webkit-transform: rotate(360deg);
-      transform: rotate(360deg);
-    }
+}
+
+.thankyou svg {
+  height: 5rem;
+  width: 5rem;
+  /* font-size: 5rem; */
+}
+
+.total {
+  font-size: 5rem;
+}
+
+.listContainer {
+  display: flex;
+  text-align: left;
+}
+
+.listName,
+.listType {
+  /* flex-grow: 1; */
+  margin: 0px 20px 0px 20px;
+}
+
+.listNameContainer {
+  flex-grow: 1;
+  display: flex;
+}
+
+.listItem {
+  margin: 0px 10px 0px 10px;
+}
+
+.listItemContainer {
+  display: flex;
+}
+
+@media (max-width:575px) {
+  .listNameContainer {
+    flex-direction: column;
   }
-  .thankyou svg{
-    height: 5rem;
-    width: 5rem;
-    /* font-size: 5rem; */
+}
+
+
+@media (max-width:500px) {
+  .listNameContainer {
+    flex-grow:unset ;
+    /* background-color: tomato; */
   }
+  .listContainer{
+    font-size:8px;
+    /* background-color: tomato; */
+  }
+  .ant-btn, .ant-btn:active, .ant-btn:focus{
+    height: unset;
+    padding: 5px;
+    font-size: unset;
+  }
+}
+
+
+
+@media (max-width:745px) {
+
+  .listItem {
+    margin: 0 1rem 0 1rem;
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+
+
+  .listItemContainer {
+    flex-direction: column;
+  }
+}

@@ -113,7 +113,7 @@ function VoterIdForm() {
         delete values.sign;
         values.dob = values.dob._d
         // values.disablity = values.disablity[0]
-        values.haveEpic = "None"
+        values.haveEpic = null
         // if (!values.aadharNumber) {
         //     values.aadharNo = "None";
         // }

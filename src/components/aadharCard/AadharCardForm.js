@@ -119,7 +119,7 @@ function AadharCardForm() {
         delete values.photo;
         values.dob = values.dob._d
         if (!values.aadharNumber) {
-            values.aadharNo = "None";
+            values.aadharNo = null;
         }
 
         values.status = "submitted"
