@@ -38,7 +38,7 @@ const formItemLayout = {
 
 
 
-function PanCardForm() {
+function PanCardForm({senderId}) {
 
     const allFiles = ["photo", "sign", "aadharCard"]
     const [error, setError] = useState(false);
@@ -132,6 +132,8 @@ function PanCardForm() {
         values.dob = values.dob._d
 
         values.status = "submitted"
+        values.senderId = senderId
+        
         console.log("values", values)
         uploadData(values, fireBaseTableName).then((ref) => {
             console.log("got rref now uploading images");

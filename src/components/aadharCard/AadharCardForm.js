@@ -35,7 +35,7 @@ const formItemLayout = {
 };
 
 
-function AadharCardForm() {
+function AadharCardForm({senderId}) {
     const allFiles = ["photo", "sign", "identityProof"]
     const [aadharNoInput, setaadharNoInput] = useState(false);
     const [error, setError] = useState(false);
@@ -128,7 +128,9 @@ function AadharCardForm() {
         }
 
         values.status = "submitted"
+        values.senderId = senderId
 
+        console.log("values after adding sender Id",values);
         uploadData(values,fireBaseTableName).then((ref) => {
             console.log("got rref now uploading images");
             uploadAllImages(ref.id).then((res) => {

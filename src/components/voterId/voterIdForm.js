@@ -38,7 +38,7 @@ const formItemLayout = {
     labelAlign: 'left'
 };
 
-function VoterIdForm() {
+function VoterIdForm({senderId}) {
     const [haveEPiC, setHaveEpic] = useState(false);
     const [shifting, setShifting] = useState(false)
 
@@ -125,6 +125,9 @@ function VoterIdForm() {
         // }
 
         values.status = "submitted"
+        values.senderId = senderId
+
+        
         console.log("values", values)
         uploadData(values, fireBaseTableName).then((ref) => {
             console.log("got rref now uploading images");

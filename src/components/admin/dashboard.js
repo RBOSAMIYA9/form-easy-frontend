@@ -41,7 +41,7 @@ function Dashboard({ adminType }) {
     }
     const rejectCount = () => {
         const collectionRef = projectFirestore.collection(dbName[adminType]);
-        collectionRef.where('status', '==', 'rejected').onSnapshot((snapshot) => {
+        collectionRef.where('status', '==', 'rejected').get((snapshot) => {
             console.log("rejected: ", snapshot.docs.length);
             setRejectedCount(snapshot.docs.length)
         })

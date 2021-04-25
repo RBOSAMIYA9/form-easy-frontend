@@ -40,13 +40,13 @@ function App() {
           <Content className="site-layout" style={{ padding: '1rem 5rem', marginTop: 64, textAlign: 'center' }}> */}
            
             <Switch>
-              <Route path="/aadharCard" component={AadharCard}/>
+              <Route path="/aadharCard/:id" component={AadharCard}/>
            
-              <Route path="/panCard" component={PanCard}/>
+              <Route path="/panCard/:id" component={PanCard}/>
               
-              <Route path="/voterId" component={VoterId}/>
+              <Route path="/voterId/:id" component={VoterId}/>
               
-              <Route path="/login" component={LoginPage}/>
+              <Route path="/login/:id" component={LoginPage}/>
                 
             </Switch>
           
