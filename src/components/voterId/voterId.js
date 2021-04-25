@@ -23,7 +23,7 @@ function VoterId({ match }) {
         <>
             <Layout>
                 <HeaderSection />
-                <Content className="site-layout" style={{ padding: '1rem 5rem', marginTop: 64, textAlign: 'left' }}>
+                <Content className="site-layout" style={{ padding: '1rem 5rem', marginTop: 64, textAlign: 'center' }}>
                     {
                         !showVoterIdForm ? (
                             <>

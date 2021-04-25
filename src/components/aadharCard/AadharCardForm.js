@@ -55,7 +55,7 @@ function AadharCardForm({senderId}) {
     const [loading, setLoading] = useState(false);
 
     // eslint-disable-next-line
-    const [formFilled, setFormFilled, formFilledRef] = useState(false);
+    const [formFilled, setFormFilled, formFilledRef] = useState(true);
 
     const toggleAadharNoInput = (e) => {
 
@@ -148,7 +148,7 @@ function AadharCardForm({senderId}) {
 
     return (
         <>
-            {formFilled  ? <ThankYou /> : <>
+            {formFilled  ? <ThankYou formName="aadhar" /> : <>
                 <Spin size="large" spinning={loading}>
                     <h1>AadharCard Form</h1>
                     <Form

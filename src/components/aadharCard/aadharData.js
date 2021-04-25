@@ -6,7 +6,7 @@ function contentData() {
 
     return (
         <>
-            <div>
+            <div  style={{textAlign:'left'}}>
                 <h1 style={{textAlign:'center'}}>AADHAR</h1>
                 <h3>What is AADHAR?</h3>
                 <p>Aadhaar number is a 12-digit random number issued by the UIDAI (“Authority”) to the residents of India after satisfying the verification process laid down by the Authority.</p>

@@ -155,7 +155,7 @@ function PanCardForm({senderId}) {
 
     return (
         <>
-            {formFilled ? <ThankYou /> : <>
+            {formFilled ? <ThankYou  formName="pan"/> : <>
                 <Spin size="large" spinning={loading}>
                     <h1>PanCard Form</h1>
                     <Form

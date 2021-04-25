@@ -148,7 +148,7 @@ function VoterIdForm({senderId}) {
     // };
     return (
         <>
-            {formFilled ? <ThankYou /> : <>
+            {formFilled ? <ThankYou formName="voter" /> : <>
                 <Spin size="large" spinning={loading}>
                     <h1>Voter Id form</h1>
                     <Form

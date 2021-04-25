@@ -3,7 +3,7 @@ import React from 'react'
 function panCardData() {
     return (
         <>
-            <div>
+            <div style={{textAlign:'left'}}>
                 <h1 style={{textAlign:'center'}} >PAN</h1>
                 <h3>Permanent Account Number (PAN)</h3>
                 <h4>What is PAN?</h4>
