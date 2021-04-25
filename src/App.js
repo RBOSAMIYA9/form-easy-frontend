@@ -46,7 +46,7 @@ function App() {
               
               <Route path="/voterId/:id" component={VoterId}/>
               
-              <Route path="/login/:id" component={LoginPage}/>
+              <Route path="/login/" component={LoginPage}/>
                 
             </Switch>
           
