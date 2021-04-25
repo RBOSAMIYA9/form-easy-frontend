@@ -17,20 +17,20 @@ import {
 function App() {
 
 
-  const getData = () => {
-    console.log("sending fetch request");
-    axios.post(`/api/sendMessage/`, {
-      no: '8888888888',
-      message: 'hey how are uou'
-    })
-      .then(res => {
-        console.log(res.data.data);
+  // const getData = () => {
+  //   console.log("sending fetch request");
+  //   axios.post(`/api/sendMessage/`, {
+  //     no: '8888888888',
+  //     message: 'hey how are uou'
+  //   })
+  //     .then(res => {
+  //       console.log(res.data.data);
 
-      });
-  }
-  useEffect(() => {
-    // getData();
-  }, [])
+  //     });
+  // }
+  // useEffect(() => {
+  //   // getData();
+  // }, [])
   return (
     // style={{color:'white',fontSize:'2rem'}}
     <Router>

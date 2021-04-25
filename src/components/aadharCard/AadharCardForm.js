@@ -14,11 +14,9 @@ import {
     DatePicker
 } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
-// import moment from 'moment';
 import '../../custom.css'
 import country from 'country_state_district';
 import { uploadData, uploadPhoto } from '../../firebase/addData'
-// import {useState as useStateRef} from 'react-usestateref'
 import useState from 'react-usestateref'
 import ThankYou from '../thankYou'
 
@@ -45,8 +43,13 @@ function AadharCardForm() {
     // const [fileSign, setFileSign] = useState(null);
     // const [fileIdProof, setFileIdProof] = useState(null);
 
+    // eslint-disable-next-line
     var [filePhoto, setFilePhoto, filePhotoRef] = useState(null);
+    
+    // eslint-disable-next-line
     var [fileSign, setFileSign, fileSignRef] = useState(null);
+    
+    // eslint-disable-next-line
     var [fileIdProof, setFileIdProof, fileIdProofRef] = useState(null);
 
     const [loading, setLoading] = useState(false);
