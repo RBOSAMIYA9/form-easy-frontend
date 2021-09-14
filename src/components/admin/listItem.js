@@ -34,24 +34,30 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
 
     const viewById = (applicantId) => {
         console.log("view by id ", applicantId.id);
-        collectionRef.doc(applicantId.id).get().then((doc) => {
-            var data = doc.data();
-            data.createdAt = data.createdAt.toDate().toLocaleDateString()
-            data.dob = data.dob.toDate().toLocaleDateString()
-            // function toLocaleDateString() { [native code] }
-            console.log("data", data);
-            setModalContent(data)
-            // console.log("keys", modalContentKeysRef.current);
+        return new Promise((resolve, reject) => {
+            collectionRef.doc(applicantId.id).get().then((doc) => {
+                var data = doc.data();
+                data.createdAt = data.createdAt.toDate().toLocaleDateString()
+                data.dob = data.dob.toDate().toLocaleDateString()
+                // function toLocaleDateString() { [native code] }
+                // console.log("data", data);
+                resolve(data)
+                // console.log("keys", modalContentKeysRef.current);
+            })
         })
-        
 
 
+
+
+        // console.log("date",modalContentValues[2].toDate());
+    }
+    const setDataIntoModal = (data) => {
+        setModalContent(data)
         setModalContentKeys(Object.keys(modalContentRef.current))
         setModalContentValues(Object.values(modalContentRef.current))
 
         console.log("keys", modalContentKeysRef.current);
         console.log("values", modalContentValuesRef.current);
-        // console.log("date",modalContentValues[2].toDate());
     }
 
     const approveById = (applicantId) => {
@@ -95,7 +101,7 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                                     {name}
                                 </span>
                                 <span className="listType">
-                                    {listType} 
+                                    {listType}
                                 </span>
                             </span>
                             <span className="listItemContainer">
@@ -105,8 +111,13 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                                         <span className="listItem">
 
                                             <Button onClick={() => {
-                                                setViewAllVisible(true)
-                                                viewById({ id })
+
+                                                viewById({ id }).then((data) => {
+                                                    console.log("done done done")
+                                                    setDataIntoModal(data)
+                                                    setViewAllVisible(true)
+                                                })
+
                                             }}>View</Button>
                                         </span>
                                         <span className="listItem">
@@ -117,8 +128,11 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                                         <span className="listItem">
 
                                             <Button onClick={() => {
-                                                setViewAllVisible(true)
-                                                viewById({ id })
+                                                viewById({ id }).then((data) => {
+                                                    console.log("done done done")
+                                                    setDataIntoModal(data)
+                                                    setViewAllVisible(true)
+                                                })
                                             }}>View</Button>
                                         </span>
                                         <span className="listItem">
@@ -129,8 +143,11 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                                         <span className="listItem">
 
                                             <Button onClick={() => {
-                                                setViewAllVisible(true)
-                                                viewById({ id })
+                                                viewById({ id }).then((data) => {
+                                                    console.log("done done done")
+                                                    setDataIntoModal(data)
+                                                    setViewAllVisible(true)
+                                                })
                                             }}>View</Button>
                                         </span>
                                         <span className="listItem">
@@ -149,7 +166,7 @@ function ListItem({ menuType, name, adminDbName, id, status, listType }) {
                 </Col>
             </Row>
             <Modal
-                title="Modal 1000px width"
+                title="View Details"
                 visible={viewAllVisible}
                 onOk={() => setViewAllVisible(false)}
                 onCancel={() => setViewAllVisible(false)}

@@ -1,12 +1,12 @@
-// import HeaderSection from './components/HeaderSection'
-// import { useEffect } from 'react'
-// import axios from 'axios';
-// import { Layout } from 'antd';
+
+import { useState } from 'react'
+
 import 'antd/dist/antd.css';
 import AadharCard from './components/aadharCard/AadharCard'
 import PanCard from './components/panCard/panCard'
 import VoterId from './components/voterId/voterId'
-import LoginPage from './components/login'
+import DashboardPage from './components/DashboardPage'
+import Home from './components/Home'
 
 import {
   BrowserRouter as Router,
@@ -15,6 +15,8 @@ import {
 } from "react-router-dom";
 // const { Footer, Content } = Layout;
 function App() {
+
+  const [user, setUser] = useState(JSON.parse(localStorage.getItem('user')));
 
 
   // const getData = () => {
@@ -38,19 +40,25 @@ function App() {
         {/* <Layout>
           <HeaderSection />
           <Content className="site-layout" style={{ padding: '1rem 5rem', marginTop: 64, textAlign: 'center' }}> */}
-           
-            <Switch>
-              <Route path="/aadharCard/:id" component={AadharCard}/>
-           
-              <Route path="/panCard/:id" component={PanCard}/>
-              
-              <Route path="/voterId/:id" component={VoterId}/>
-              
-              <Route path="/login/" component={LoginPage}/>
-                
-            </Switch>
-          
-          {/* </Content>
+
+        <Switch>
+          <Route path="/aadharCard/:id" component={AadharCard} />
+
+          <Route path="/panCard/:id" component={PanCard} />
+
+          <Route path="/voterId/:id" component={VoterId} />
+
+          <Route exact path="/dashboard" >
+            <DashboardPage user={user} setUser={setUser} />
+
+          </Route>
+          <Route exact path="/" >
+            <Home />
+          </Route>
+         
+        </Switch>
+
+        {/* </Content>
           <Footer style={{ textAlign: 'center', bottom: '0' }}>©2021 FormEasy</Footer>
         </Layout> */}
       </>

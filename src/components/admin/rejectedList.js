@@ -1,38 +1,39 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ListItem from './listItem'
-
-import useState from 'react-usestateref'
+import { Spin, Space } from 'antd';
 import { projectFirestore } from '../../firebase';
 
 
 function RejectedList({ adminType, adminDbName }) {
 
-    // eslint-disable-next-line
-    const [rejectedList, setRejectedList, rejectedListRef] = useState([])
-    const viewAll = () => {
 
-        const collectionRef = projectFirestore.collection(adminDbName);
-        // collectionRef.where("status", '==', 'rejected').onSnapshot((snapshot) => {
+    const [rejectedList, setRejectedList] = useState([])
+    const [loading, setLoading] = useState(false);
+    const [admin, setAdmin] = useState(null);
+    const [adminDb, setAdminDb] = useState(null);
 
-        //     setRejectedList(snapshot.docs.map((doc) => doc.data()))
-        // })
+    const viewAll = (dbName) => {
+        return new Promise((resolve, reject) => {
+            const collectionRef = projectFirestore.collection(dbName);
 
-        collectionRef.where("status", '==', 'rejected').onSnapshot((snapshot) => {
-            setRejectedList(snapshot.docs.map((doc) => (
-                {
-                    id: doc.id,
-                    data: doc.data()
-                })))
-
+            collectionRef.where("status", '==', 'rejected').onSnapshot((snapshot) => {
+                setRejectedList(snapshot.docs.map((doc) => (
+                    {
+                        id: doc.id,
+                        data: doc.data()
+                    })))
+                resolve("view rejectlist done")
+            })
         })
+
 
     }
     const renderList = (type) => {
         console.log("renderList admintype", type);
-        if (type.adminType === "aadharAdmin") {
+        if (type === "aadharAdmin") {
             console.log("inside aadhar admin");
-            return (rejectedListRef.current &&
-                rejectedListRef.current.map((doc) => (
+            return (rejectedList &&
+                rejectedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -40,17 +41,17 @@ function RejectedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.fullName}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
-                            status={doc.data.status} 
+                            adminDbName={adminDb}
+                            adminType={type}
+                            status={doc.data.status}
                             listType="Aadhar Card"
-                            />
+                        />
                     </>)))
 
         }
-        else if (type.adminType === "panAdmin") {
-            return (rejectedListRef.current &&
-                rejectedListRef.current.map((doc) => (
+        else if (type === "panAdmin") {
+            return (rejectedList &&
+                rejectedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -58,17 +59,17 @@ function RejectedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.pancardName}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
-                            status={doc.data.status} 
+                            adminDbName={adminDb}
+                            adminType={type}
+                            status={doc.data.status}
                             listType="Pan Card"
-                            />
+                        />
                     </>)))
         }
-        else if (type.adminType === "voterIdAdmin") {
+        else if (type === "voterIdAdmin") {
 
-            return (rejectedListRef.current &&
-                rejectedListRef.current.map((doc) => (
+            return (rejectedList &&
+                rejectedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -76,49 +77,59 @@ function RejectedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.name}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
+                            adminDbName={adminDb}
+                            adminType={type}
                             status={doc.data.status}
-                            listType="VoterId Card"  />
+                            listType="VoterId Card" />
                     </>)))
         }
 
     }
     useEffect(() => {
-        console.log("useeffect called")
-        viewAll()
-        console.log("aaplicationList", rejectedList, rejectedListRef.current);
+        setLoading(true);
 
+        var data = JSON.parse(localStorage.getItem('user'))
+        console.log("data from localstorage")
+        console.log("data from localstorage", data)
+        viewAll(data.dbName).then((data) => {
+            setLoading(false);
+        })
+        setAdmin(data.adminType)
+        setAdminDb(data.dbName)
         // eslint-disable-next-line
     }, [])
+
+    useEffect(() => {
+
+        setLoading(true);
+
+        if (adminType) {
+
+            viewAll(adminDbName).then((data) => {
+                setLoading(false);
+            })
+            setAdmin(adminType);
+            setAdminDb(adminDbName);
+        }
+        // eslint-disable-next-line
+    }, [adminType])
 
     return (
         <>
             <h1>
                 RejectedList
-                 {/* {adminType} {adminDbName} */}
+                {/* {adminType} {adminDbName} */}
             </h1>
 
 
-            {renderList({ adminType })}
+            {loading ? (
+                <Space size="middle">
+                    <Spin size="large" />
+                </Space>
+            ) : (
+                renderList(admin)
+            )}
 
-            {/* 
-            {
-                rejectedListRef.current &&
-                rejectedListRef.current.map((doc) => (
-                    <>
-                        <ListItem menuType="rejectedList"
-                            key={doc.id}
-                            name={doc.data.fullName}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
-                            id={doc.id}
-                            status={doc.data.status}
-                        />
-                    </>
-                ))
-
-            } */}
 
         </>
     )

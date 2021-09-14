@@ -1,33 +1,41 @@
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import ListItem from './listItem'
-import useState from 'react-usestateref'
 import { projectFirestore } from '../../firebase';
+import { Spin, Space } from 'antd';
+
+
 
 function ApprovedList({ adminType, adminDbName }) {
 
     // eslint-disable-next-line
-    const [approvedList, setApprovedList, approvedListRef] = useState([])
-    const viewAll = () => {
+    const [approvedList, setApprovedList] = useState([])
+    const [loading, setLoading] = useState(false);
+    const [admin, setAdmin] = useState(null);
+    const [adminDb, setAdminDb] = useState(null);
 
-        const collectionRef = projectFirestore.collection(adminDbName);
-        collectionRef.where("status", '==', 'approved').onSnapshot((snapshot) => {
-            setApprovedList(snapshot.docs.map((doc) => (
-                {
-                    id: doc.id,
-                    data: doc.data()
-                })))
 
+    const viewAll = (dbName) => {
+        // console.log("dbName in viewall", dbName)
+        return new Promise((resolve, reject) => {
+            const collectionRef = projectFirestore.collection(dbName);
+            collectionRef.where("status", '==', 'approved').onSnapshot((snapshot) => {
+                setApprovedList(snapshot.docs.map((doc) => (
+                    {
+                        id: doc.id,
+                        data: doc.data()
+                    })))
+                resolve("view all done")
+            })
         })
-        // console.log("before setting data ", approvedList);
-        // console.log("before setting data ", approvedListRef.current);
+
 
     }
     const renderList = (type) => {
         console.log("renderList admintype", type);
-        if (type.adminType === "aadharAdmin") {
+        if (type === "aadharAdmin") {
             console.log("inside aadhar admin");
-            return (approvedListRef.current &&
-                approvedListRef.current.map((doc) => (
+            return (approvedList &&
+                approvedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -35,16 +43,16 @@ function ApprovedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.fullName}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
+                            adminDbName={adminDb}
+                            adminType={type}
                             status={doc.data.status}
                             listType="Aadhar Card" />
                     </>)))
 
         }
-        else if (type.adminType === "panAdmin") {
-            return (approvedListRef.current &&
-                approvedListRef.current.map((doc) => (
+        else if (type === "panAdmin") {
+            return (approvedList &&
+                approvedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -52,18 +60,18 @@ function ApprovedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.pancardName}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
+                            adminDbName={adminDb}
+                            adminType={type}
                             status={doc.data.status}
-                            listType="Pan Card" 
-                           
-                            />
+                            listType="Pan Card"
+
+                        />
                     </>)))
         }
-        else if (type.adminType === "voterIdAdmin") {
+        else if (type === "voterIdAdmin") {
 
-            return (approvedListRef.current &&
-                approvedListRef.current.map((doc) => (
+            return (approvedList &&
+                approvedList.map((doc) => (
                     <>
 
                         <ListItem
@@ -71,47 +79,63 @@ function ApprovedList({ adminType, adminDbName }) {
                             key={doc.id}
                             name={doc.data.name}
                             id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
+                            adminDbName={adminDb}
+                            adminType={type}
                             status={doc.data.status}
-                            listType="VoterId Card"  />
+                            listType="VoterId Card" />
                     </>)))
         }
 
     }
     useEffect(() => {
-        console.log("useeffect called")
-        viewAll()
-        console.log("aaplicationList", approvedList, approvedListRef.current);
+
+
+        setLoading(true);
+
+        var data = JSON.parse(localStorage.getItem('user'))
+        console.log("data from localstorage")
+        console.log("data from localstorage", data)
+        viewAll(data.dbName).then((data) => {
+            setLoading(false);
+        })
+        setAdmin(data.adminType)
+        setAdminDb(data.dbName)
 
         // eslint-disable-next-line
     }, [])
+
+
+    useEffect(() => {
+
+        setLoading(true);
+
+        if (adminType) {
+
+            viewAll(adminDbName).then((data) => {
+                setLoading(false);
+            })
+            setAdmin(adminType);
+            setAdminDb(adminDbName);
+        }
+        // eslint-disable-next-line
+    }, [adminType])
 
     return (
         <>
             <h1>
                 Approved list
-                {/* {adminType} {adminDbName} */}
+
             </h1>
-            {renderList({ adminType })}
-            {/* {
-                approvedListRef.current &&
-                approvedListRef.current.map((doc) => (
-                    <>
 
-                        <ListItem
-                            menuType="approvedList"
-                            key={doc.id}
-                            name={doc.data.fullName}
-                            id={doc.id}
-                            adminDbName={adminDbName}
-                            adminType={adminType}
-                            status={doc.data.status}
-                        />
-                    </>
-                ))
+            {loading ? (
+                <Space size="middle">
+                    <Spin size="large" />
+                </Space>
+            ) : (
+                renderList(admin)
+            )}
 
-            } */}
+
 
         </>
 
