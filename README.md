@@ -11,8 +11,9 @@ A web app with whatsapp bot to ease the process of filling necessary forms like:
 - Voter Id card etc.
 
 ## Demo Video
+https://user-images.githubusercontent.com/27606753/144578902-9b14dc56-9056-4650-942f-4d25f0ecbcc1.mp4
 
-https://user-images.githubusercontent.com/27606753/133272618-0b832720-ac89-49a1-88d0-fd84de85fa25.mp4
+<!-- https://user-images.githubusercontent.com/27606753/133272618-0b832720-ac89-49a1-88d0-fd84de85fa25.mp4 -->
 
 <a href="https://formeasy.ravindrabosamiya.tech/">
 <button>View Demo</button>
@@ -33,6 +34,9 @@ https://user-images.githubusercontent.com/27606753/133272618-0b832720-ac89-49a1-
 
 - approve form
 - reject form
+
+
+
 - view approved list
 - view rejected list
 - view submitted list
