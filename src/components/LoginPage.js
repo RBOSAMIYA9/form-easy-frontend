@@ -81,6 +81,20 @@ function LoginPage({ setUser, setAdminType, setAdminDbName, setDataToLocalStorag
     }
 
 
+    const guestLogin = (guestLoginUserName) => {
+
+        const result = credential.filter((user) => user.username === guestLoginUserName)[0];
+        // console.log(result)
+        setUser({ userName: result.username })
+        setAdminType(result.type);
+        setAdminDbName(result.dbName);
+
+        dataToLocalStorage(result).then((data) => {
+            console.log("data::", data);
+
+        });
+
+    }
 
 
 
@@ -94,6 +108,7 @@ function LoginPage({ setUser, setAdminType, setAdminDbName, setDataToLocalStorag
     const onFinish = (values) => {
 
         let result = filter(credential, values.username, 'username')[0];
+        console.log('result', result)
         if (!result) {
             setshowError(true);
             alertTimeout();
@@ -181,6 +196,24 @@ function LoginPage({ setUser, setAdminType, setAdminDbName, setDataToLocalStorag
 
                                     </Form.Item>
                                 </Form>
+
+                                <Button type="secondary" onClick={() => guestLogin(credential[0].username)}>
+                                    Guest aadhar admin
+                                </Button>
+
+                                <Button type="secondary" onClick={() => guestLogin(credential[1].username)}  style={{
+                                    marginTop: "0.5rem",
+                                }}>
+
+                                    Guest pan admin
+                                </Button>
+
+                                <Button type="secondary"  onClick={() => guestLogin(credential[2].username)} style={{
+                                    marginTop: "0.5rem"
+                                }}>
+                                    Guest voter admin
+                                </Button>
+
                             </div>
                         </Content>
                     </>
